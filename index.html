@@ -80,6 +80,50 @@ nav.tabbar button{flex:1;border:0;background:none;color:var(--mute);font:inherit
 nav.tabbar button.on{color:var(--acc)}
 nav.tabbar svg{width:26px;height:26px}
 @media(min-width:700px){main,header{max-width:680px;margin:0 auto}}
+/* chat */
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-top:6px}
+.chip.ni{background:var(--outbg);color:var(--mute)}.chip.ea{background:var(--accbg);color:var(--acc)}.chip.ok{background:var(--okbg);color:var(--ok)}.chip.pd{background:var(--warnbg);color:var(--warn)}
+.step{grid-template-columns:36px 1fr 20px;cursor:pointer}
+.step .go{color:var(--mute);font-size:22px;line-height:32px}
+#v-chat{padding-bottom:110px}
+.ficha{margin-bottom:10px}
+.ficha summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.ficha summary::-webkit-details-marker{display:none}
+.it{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--line)}
+.it:last-child{border-bottom:0}
+.st{flex:none;align-self:center;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap;background:var(--outbg);color:var(--mute)}
+.st.OK{background:var(--okbg);color:var(--ok)}.st.KIT{background:var(--accbg);color:var(--acc)}.st.PEN{background:var(--warnbg);color:var(--warn)}
+.fl{font-size:13px;margin:8px 0 2px;font-weight:600}.fl+ul{margin:2px 0 4px;padding-left:18px;font-size:13px}
+.msgs{display:flex;flex-direction:column;gap:8px}
+.msg{max-width:86%;padding:9px 12px;border-radius:16px;font-size:15px;line-height:1.4;white-space:pre-wrap;word-wrap:break-word}
+.msg.u{align-self:flex-end;background:var(--acc);color:#fff;border-bottom-right-radius:5px}
+.msg.a{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:5px}
+.msg img{display:block;max-width:220px;max-height:260px;border-radius:10px;margin-bottom:6px}
+.msg.think{color:var(--mute);font-style:italic}
+.empty{color:var(--mute);font-size:14px;text-align:center;padding:24px 10px}
+.composer{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--bar);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
+.prev{display:flex;gap:6px;margin:0 0 6px 44px;flex-wrap:wrap}.prev div{position:relative}.prev img{width:56px;height:56px;object-fit:cover;border-radius:8px}
+.prev button{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:99px;border:0;background:#000a;color:#fff;font-size:12px;line-height:20px;padding:0}
+.row{display:flex;gap:6px;align-items:flex-end}
+.ib{width:38px;height:38px;flex:none;border:0;border-radius:99px;background:var(--outbg);color:var(--ink);display:grid;place-items:center}
+.ib svg{width:22px;height:22px}.ib.rec{background:#dc2626;color:#fff}
+.ib.send{background:var(--acc);color:#fff}.ib:disabled{opacity:.4}
+textarea{flex:1;resize:none;border:1px solid var(--line);border-radius:19px;padding:9px 14px;font:inherit;font-size:16px;background:var(--card);color:var(--ink);max-height:120px;min-height:38px}
+.hint{font-size:11px;color:var(--mute);margin:4px 4px 0 48px}
+.bar2{display:flex;gap:8px;margin:0 4px 12px;flex-wrap:wrap}
+.btn2{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:inherit;font-size:14px;font-weight:600}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(120px + env(safe-area-inset-bottom));background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:10px;font-size:14px;z-index:50;max-width:90%}
+.geral textarea{width:100%;border-radius:12px;min-height:60px;margin-top:6px}
+.warnbox{background:var(--warnbg);color:var(--warn);border-radius:12px;padding:10px 12px;font-size:13px;margin:0 4px 12px}
+
+.st3{display:flex;gap:6px;margin:0 4px 12px;flex-wrap:wrap}
+.st3 button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 12px;font:inherit;font-size:13px;font-weight:600}
+.st3 button.on.ok{background:var(--okbg);color:var(--ok);border-color:transparent}
+.st3 button.on.pd{background:var(--warnbg);color:var(--warn);border-color:transparent}
+.st3 button.on.ni{background:var(--outbg);color:var(--ink);border-color:var(--ink)}
+.msg .tm{display:block;font-size:11px;opacity:.75;margin-top:4px}
+.msg .del{border:0;background:none;color:inherit;opacity:.7;font-size:11px;padding:0;margin-left:8px;text-decoration:underline}
+.cnt{font-size:12px;color:var(--mute);margin-left:6px}
 </style></head><body>
 <header>
  <button class="back hidden" id="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><span id="backlbl">Calendário</span></button>
@@ -102,10 +146,26 @@ nav.tabbar svg{width:26px;height:26px}
 <section id="v-conf" class="hidden">
  <div class="prog" id="prog"></div>
  <div id="seq"></div>
- <div class="note">Ordem: primeiro as salas com aula mais cedo, depois as livres e, por último, a 212 (backup). Os vistos ficam salvos neste iPhone.</div>
+ <div class="card geral"><b>Alteração do dia</b> <span class="rt">(opcional)</span><textarea id="geral" rows="2" placeholder="Ex.: controles do projetor recolhidos e entregues no kit do professor"></textarea></div>
+ <div class="note">Toque numa sala para anotar: escreva, dite pelo microfone do teclado ou tire fotos. No fim, toque em <b>Exportar conferência</b> e mande o ZIP no chat do Claude para gerar os relatórios. As anotações ficam salvas só neste iPhone.</div>
+</section>
+<section id="v-chat" class="hidden">
+ <div class="st3" id="st3"><button data-s="ok" class="ok">Conferida OK</button><button data-s="pd" class="pd">Com pendências</button><button data-s="ni" class="ni">Não conferida</button></div>
+ <div class="msgs" id="msgs"></div>
 </section>
 </main>
 <div class="cta hidden" id="cta"><button id="goConf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg>Modo de conferência</button></div>
+<div class="composer hidden" id="composer">
+ <div class="prev" id="prev2"></div>
+ <div class="row">
+  <button class="ib" id="photoBtn" aria-label="Adicionar foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
+  <textarea id="txt" rows="1" placeholder="Como está a sala?"></textarea>
+  <button class="ib send" id="sendBtn" aria-label="Salvar anotação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+ </div>
+ <div class="hint">Para falar em vez de escrever, toque no microfone do teclado do iPhone.</div>
+ <input type="file" id="file" accept="image/*" multiple hidden>
+</div>
+<script src="vendor/jszip.min.js"></script>
 <script>
 const DATA={"202": {"1": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "A&D II", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "HM - IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}], "Quarta": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "BIO II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ / UBSF Bakitas", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ", "fora": true}], "Segunda": [{"start": "08:00", "end": "12:20", "subj": "SM II - Teórica", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}, "2": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "A&D II", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "HM - IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}], "Quarta": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "BIO II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS / UBSF Bakitas", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS", "fora": true}], "Segunda": [{"start": "08:00", "end": "12:20", "subj": "SM II - Teórica", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}}, "210": {"1": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "A&D II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS / UBSF Edla Jordan", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS", "fora": true}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "BIO II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "A&D II", "fora": false}, {"start": "13:20", "end": "17:40", "subj": "SM II - Teórica", "fora": false}], "Quarta": [{"start": "08:50", "end": "12:20", "subj": "VIIDAS IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}, "2": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "A&D II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ / UBSF Edla Jordan", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ", "fora": true}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "BIO II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "A&D II", "fora": false}, {"start": "13:20", "end": "17:40", "subj": "SM II - Teórica", "fora": false}], "Quarta": [{"start": "08:50", "end": "12:20", "subj": "VIIDAS IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}}, "204": {"1": {"Quarta": [{"start": "07:10", "end": "18:30", "subj": "SM I", "where": "HMSJ", "fora": true}], "Quinta": [{"start": "07:10", "end": "08:50", "subj": "SC III", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "VIIDAS III", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BIO I", "fora": false}], "Sexta": [{"start": "08:00", "end": "12:20", "subj": "SM I - Teórica", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Terça": [{"start": "08:50", "end": "10:40", "subj": "CI III", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "A&D I", "fora": false}, {"start": "13:20", "end": "18:30", "subj": "A&D I", "fora": false}]}, "2": {"Quarta": [{"start": "07:10", "end": "18:30", "subj": "SM I", "where": "HRHDS / HMSJ", "fora": true}], "Quinta": [{"start": "07:10", "end": "08:50", "subj": "SC III", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "VIIDAS III", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BIO I", "fora": false}], "Sexta": [{"start": "08:00", "end": "12:20", "subj": "SM I - Teórica", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Terça": [{"start": "08:50", "end": "10:40", "subj": "CI III", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "A&D I", "fora": false}, {"start": "13:20", "end": "18:30", "subj": "A&D I", "fora": false}]}}, "206": {"1": {"Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BMFM II", "fora": false}, {"start": "15:00", "end": "16:50", "subj": "CI II", "fora": false}], "Terça": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}, {"start": "16:50", "end": "18:30", "subj": "HM II", "fora": false}], "Quarta": [{"start": "07:10", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Quinta": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}]}, "2": {"Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BMFM II", "fora": false}, {"start": "15:00", "end": "16:50", "subj": "CI II", "fora": false}], "Terça": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}, {"start": "16:50", "end": "17:40", "subj": "HM II", "fora": false}], "Quarta": [{"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Quinta": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}], "Sexta": [{"start": "08:00", "end": "14:10", "subj": "Prática", "where": "UBSF Ulysses Guimarães", "fora": true}]}}, "208": {"1": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "HM II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "CI II", "fora": false}], "Quinta": [{"start": "08:00", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}], "Sexta": [{"start": "08:00", "end": "14:10", "subj": "Prática", "where": "UBSF Ulysses Guimarães", "fora": true}], "Quarta": [{"start": "09:50", "end": "12:20", "subj": "BCMM I", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}]}, "2": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "HM II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Quarta": [{"start": "07:10", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BCMM I", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "CI II", "fora": false}], "Quinta": [{"start": "08:00", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}]}}};
 const ROOMS=[['202','T1','4º sem'],['204','T3','3º sem'],['206','T4','2º sem'],['208','T5','2º sem'],['210','T2','4º sem'],['212','—','backup']];
@@ -156,36 +216,136 @@ function renderDay(){
  const ord=ROOMS.slice().sort((a,b)=>{const fa=firstIn(a[0],w,dn),fb=firstIn(b[0],w,dn);return (fa?0:1)-(fb?0:1)});
  box.innerHTML=ord.map(([r,t,s])=>{const bl=blocks(r,w,dn);return `<div class="card room"><div class="rh"><span class="rn">Sala ${r}</span><span class="rt">${t} · ${s}</span></div>${bl.length?bl.map(blkHTML).join(''):`<div class="none">${r==='212'?'Backup, sem turma fixa.':'Nenhuma aula nesta sala.'}</div>`}</div>`}).join('');
 }
-function renderSeq(){
- const w=weekOf(sel),dn=dayName(sel);
- const box=document.getElementById('seq'),prog=document.getElementById('prog');prog.textContent='';
- if(guard(box,w,dn,'Fim de semana: sem conferência.'))return;
+/* ---------- armazenamento local (IndexedDB) ---------- */
+const $=id=>document.getElementById(id);
+const br=d=>d.toLocaleDateString('pt-BR');
+const escH=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(t){const el=document.createElement('div');el.className='toast';el.textContent=t;document.body.appendChild(el);setTimeout(()=>el.remove(),3200)}
+let idb=null;
+function openDB(){return idb||(idb=new Promise((ok,no)=>{const r=indexedDB.open('salas-med',1);
+ r.onupgradeneeded=()=>{const d=r.result;const n=d.createObjectStore('notas',{keyPath:'id',autoIncrement:true});n.createIndex('dia','data');d.createObjectStore('kv')};
+ r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)}))}
+async function tx(store,mode,fn){const d=await openDB();return new Promise((ok,no)=>{const t=d.transaction(store,mode);const s=t.objectStore(store);const res=fn(s);t.oncomplete=()=>ok(res&&res.result!==undefined?res.result:res);t.onerror=()=>no(t.error)})}
+const notasDia=async dia=>{const d=await openDB();return new Promise((ok,no)=>{const r=d.transaction('notas').objectStore('notas').index('dia').getAll(dia);r.onsuccess=()=>ok(r.result.sort((a,b)=>a.ts-b.ts));r.onerror=()=>no(r.error)})};
+const addNota=n=>tx('notas','readwrite',s=>s.add(n));
+const delNota=id=>tx('notas','readwrite',s=>s.delete(id));
+const kvGet=async k=>{const d=await openDB();return new Promise(ok=>{const r=d.transaction('kv').objectStore('kv').get(k);r.onsuccess=()=>ok(r.result);r.onerror=()=>ok(undefined)})};
+const kvSet=(k,v)=>tx('kv','readwrite',s=>s.put(v,k));
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+let cache={dia:null,notas:[],status:{},geral:''};
+async function loadDia(){const dia=iso(sel);const notas=await notasDia(dia);const st=(await kvGet('status_'+dia))||{};const g=(await kvGet('geral_'+dia))||'';cache={dia,notas,status:st,geral:g};return cache}
+
+/* ---------- conferência ---------- */
+function order(){const w=weekOf(sel),dn=dayName(sel);
  const rank=r=>{if(r==='212')return 9999;const f=firstIn(r,w,dn);return f?parseInt(f.replace(':','')):9000};
- const ord=ROOMS.slice().sort((a,b)=>rank(a[0])-rank(b[0])||a[0].localeCompare(b[0]));
- const key='conf-'+iso(sel),done=store(key)||{};
- const upd=()=>{const d=store(key)||{};const k=ROOMS.filter(r=>d[r[0]]).length;prog.textContent=`${k} de ${ROOMS.length} salas conferidas`};
+ return ROOMS.slice().sort((a,b)=>rank(a[0])-rank(b[0])||a[0].localeCompare(b[0]))}
+const STL={ok:['ok','Conferida OK'],pd:['pd','Com pendências'],ni:['ni','Não conferida']};
+function statusOf(r){const s=cache.status[r];const n=cache.notas.filter(x=>x.sala===r).length;
+ if(s&&STL[s])return STL[s];return n?['ea','Em conferência']:['ni','Não iniciada']}
+async function renderSeq(){
+ const w=weekOf(sel),dn=dayName(sel);
+ const box=$('seq'),prog=$('prog');prog.textContent='';
+ if(guard(box,w,dn,'Fim de semana: sem conferência.'))return;
+ await loadDia();
+ const ord=order();
+ const done=ROOMS.filter(r=>['ok','pd'].includes(cache.status[r[0]])).length;
+ prog.textContent=`${done} de ${ROOMS.length} salas conferidas`;
  box.innerHTML=ord.map(([r,t,s],i)=>{const bl=blocks(r,w,dn),f=firstIn(r,w,dn);let c,dl;
   if(r==='212'){c='l';dl='Backup: conferir por último'}
   else if(!f){c='l';dl=bl.length?'Turma fora: sala livre o dia todo':'Sem aula: sala livre o dia todo'}
-  else if(f==='07:10'){c='w';dl='Conferir antes das 07:10'}
-  else{c='b';dl=`Conferir antes das ${f}`}
-  return `<div class="card step ${c} ${done[r]?'done':''}"><div class="num">${i+1}</div><div><div class="rh" style="justify-content:flex-start;gap:8px"><span class="rn">Sala ${r}</span><span class="rt">${t} · ${s}</span></div><div class="dl">${dl}</div>${bl.filter(b=>!b.fora).map(blkHTML).join('')}</div><input type="checkbox" class="chk" aria-label="Sala ${r} conferida" data-r="${r}" ${done[r]?'checked':''}></div>`}).join('');
- box.querySelectorAll('.chk').forEach(cb=>cb.onchange=()=>{const d=store(key)||{};d[cb.dataset.r]=cb.checked;store(key,d);cb.closest('.step').classList.toggle('done',cb.checked);upd()});
- upd();
+  else if(f==='07:10'){c='w';dl='Conferir antes das 07:10'}else{c='b';dl=`Conferir antes das ${f}`}
+  const [sc,sl]=statusOf(r);const n=cache.notas.filter(x=>x.sala===r).length;
+  return `<div class="card step ${c} ${sc==='ok'?'done':''}" data-r="${r}"><div class="num">${i+1}</div><div><div class="rh" style="justify-content:flex-start;gap:8px"><span class="rn">Sala ${r}</span><span class="rt">${t} · ${s}</span></div><div class="dl">${dl}</div><span class="chip ${sc}">${sl}</span>${n?`<span class="cnt">${n} anotaç${n>1?'ões':'ão'}</span>`:''}</div><div class="go">›</div></div>`}).join('');
+ box.querySelectorAll('.step').forEach(el=>el.onclick=()=>{room=el.dataset.r;show('chat')});
+ if(document.activeElement!==$('geral'))$('geral').value=cache.geral;
 }
+let gTimer;$('geral').oninput=()=>{clearTimeout(gTimer);const dia=iso(sel),v=$('geral').value;gTimer=setTimeout(()=>kvSet('geral_'+dia,v),500)};
+
+/* ---------- anotações da sala ---------- */
+let room=null,pending=[];
+async function renderChat(){
+ await loadDia();
+ const ns=cache.notas.filter(x=>x.sala===room);
+ const st=cache.status[room];
+ $('st3').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===st));
+ const box=$('msgs');
+ box.querySelectorAll('img').forEach(i=>URL.revokeObjectURL(i.src));
+ box.innerHTML=ns.length?ns.map(n=>`<div class="msg u">${n.blob?`<img src="${URL.createObjectURL(n.blob)}" alt="foto">`:''}${escH(n.texto||'')}<span class="tm">${new Date(n.ts).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}<button class="del" data-id="${n.id}">apagar</button></span></div>`).join('')
+  :`<div class="empty">Anote como está a sala ${room}: o que conferiu, o que mudou e o que ficou pendente. Pode tirar fotos também.</div>`;
+ box.querySelectorAll('.del').forEach(b=>b.onclick=async()=>{await delNota(+b.dataset.id);renderChat()});
+ window.scrollTo(0,document.body.scrollHeight);
+}
+$('st3').querySelectorAll('button').forEach(b=>b.onclick=async()=>{const dia=iso(sel);const st=(await kvGet('status_'+dia))||{};
+ st[room]=st[room]===b.dataset.s?undefined:b.dataset.s;if(!st[room])delete st[room];await kvSet('status_'+dia,st);renderChat()});
+async function shrink(file){
+ const img=await new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=URL.createObjectURL(file)});
+ const m=1600,k=Math.min(1,m/Math.max(img.naturalWidth,img.naturalHeight));
+ const c=document.createElement('canvas');c.width=Math.round(img.naturalWidth*k);c.height=Math.round(img.naturalHeight*k);
+ c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(img.src);
+ return await new Promise(ok=>c.toBlob(ok,'image/jpeg',.82));
+}
+function renderPrev(){$('prev2').innerHTML=pending.map((p,i)=>`<div><img src="${p.url}"><button data-i="${i}">×</button></div>`).join('');
+ $('prev2').querySelectorAll('button').forEach(b=>b.onclick=()=>{URL.revokeObjectURL(pending[+b.dataset.i].url);pending.splice(+b.dataset.i,1);renderPrev()})}
+$('photoBtn').onclick=()=>$('file').click();
+$('file').onchange=async e=>{for(const f of e.target.files){try{const b=await shrink(f);pending.push({blob:b,url:URL.createObjectURL(b)})}catch(x){toast('Não consegui abrir essa foto.')}}e.target.value='';renderPrev()};
+const ta=$('txt');ta.oninput=()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,120)+'px'};
+async function send(){
+ const text=ta.value.trim();if(!text&&!pending.length)return;
+ const dia=iso(sel),now=Date.now();
+ try{
+  if(text)await addNota({data:dia,sala:room,texto:text,ts:now});
+  for(let i=0;i<pending.length;i++)await addNota({data:dia,sala:room,texto:'',blob:pending[i].blob,ts:now+1+i});
+  pending.forEach(p=>URL.revokeObjectURL(p.url));pending=[];renderPrev();ta.value='';ta.oninput();
+  renderChat();
+ }catch(e){toast('Não consegui salvar a anotação.')}
+}
+$('sendBtn').onclick=send;
+
+/* ---------- exportar ZIP ---------- */
+async function exportar(){
+ if(!window.JSZip){toast('Exportação indisponível: abra o app com internet uma vez.');return}
+ const c=await loadDia();const dia=c.dia;const w=weekOf(sel),dn=dayName(sel);
+ if(!c.notas.length&&!Object.keys(c.status).length){toast('Nenhuma anotação neste dia.');return}
+ const zip=new JSZip();const fotos=zip.folder('fotos');
+ const hm=ts=>new Date(ts).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+ let t=`CONFERÊNCIA DE SALAS - MEDICINA\nData: ${br(sel)} (${dn}) - Semana ${w}\nLocal: 2º Andar › Bloco Amarelo\nResponsável Técnico: Guilherme Resende\n`;
+ if(c.geral.trim())t+=`Alteração do dia: ${c.geral.trim()}\n`;
+ const ord=order();
+ for(const [r,turma] of ord){
+  const ns=c.notas.filter(x=>x.sala===r);const st=c.status[r];
+  const f=firstIn(r,w,dn);
+  t+=`\n==================================================\nSALA ${r}${r==='212'?' (backup)':' - Turma '+turma}${f?' - 1ª aula na sala: '+f:''}\nStatus marcado: ${st?STL[st][1]:(ns.length?'Em conferência (sem status)':'Não iniciada / sem anotações')}\n`;
+  let k=0;
+  for(const n of ns){
+   if(n.blob){k++;const nome=`sala_${r}_${String(k).padStart(2,'0')}.jpg`;fotos.file(nome,n.blob);t+=`[${hm(n.ts)}] [foto: fotos/${nome}]\n`}
+   else t+=`[${hm(n.ts)}] ${n.texto}\n`;
+  }
+  if(!ns.length)t+='(sem anotações)\n';
+ }
+ zip.file('conferencia.txt',t);
+ const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE'});
+ const name=`Conferencia_${dia}.zip`;
+ const file=new File([blob],name,{type:'application/zip'});
+ try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:name});return}}catch(e){if(e&&e.name==='AbortError')return}
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},2000);
+ toast('ZIP salvo: '+name);
+}
+
+/* ---------- navegação ---------- */
 let cur='cal';
 function show(v){cur=v;
- ['cal','day','conf'].forEach(x=>document.getElementById('v-'+x).classList.toggle('hidden',x!==v));
- const back=document.getElementById('back'),h=document.getElementById('htitle'),sub=document.getElementById('hsub'),cta=document.getElementById('cta');
- back.classList.toggle('hidden',v==='cal');
- cta.classList.toggle('hidden',!(v==='day'&&cta.dataset.ok));
+ ['cal','day','conf','chat'].forEach(x=>$('v-'+x).classList.toggle('hidden',x!==v));
+ const h=$('htitle'),sub=$('hsub'),cta=$('cta'),cb=$('goConf');
+ $('back').classList.toggle('hidden',v==='cal');$('composer').classList.toggle('hidden',v!=='chat');cta.classList.add('hidden');
  if(v==='cal'){h.textContent='Calendário';sub.textContent='Salas de Medicina · 2026-2';renderMonth()}
- if(v==='day'){renderDay();cta.classList.toggle('hidden',!cta.dataset.ok);document.getElementById('backlbl').textContent='Calendário';h.textContent=fmtLong(sel);sub.textContent='Aulas por sala'}
- if(v==='conf'){renderSeq();document.getElementById('backlbl').textContent='Dia';h.textContent='Conferência';sub.textContent=fmtLong(sel)}
+ if(v==='day'){renderDay();$('backlbl').textContent='Calendário';h.textContent=fmtLong(sel);sub.textContent='Aulas por sala';
+  if(cta.dataset.ok){cta.classList.remove('hidden');cb.lastChild.textContent='Modo de conferência';cb.onclick=()=>show('conf')}}
+ if(v==='conf'){renderSeq();$('backlbl').textContent='Dia';h.textContent='Conferência';sub.textContent=fmtLong(sel);
+  if(weekOf(sel)&&dayName(sel)){cta.classList.remove('hidden');cb.lastChild.textContent='Exportar conferência (ZIP)';cb.onclick=exportar}}
+ if(v==='chat'){$('backlbl').textContent='Conferência';const t=ROOMS.find(x=>x[0]===room);h.textContent='Sala '+room;sub.textContent=(t[1]==='—'?'Backup':'Turma '+t[1])+' · '+fmtLong(sel);renderChat()}
  window.scrollTo(0,0)}
 function renderAll(){view=new Date(sel.getFullYear(),sel.getMonth(),1);renderMonth()}
-document.getElementById('back').onclick=()=>show(cur==='conf'?'day':'cal');
-document.getElementById('goConf').onclick=()=>show('conf');
+document.getElementById('back').onclick=()=>show(cur==='chat'?'conf':cur==='conf'?'day':'cal');
 document.getElementById('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderMonth()};
 document.getElementById('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderMonth()};
 document.getElementById('hoje').onclick=()=>{sel=new Date(today);renderAll()};
