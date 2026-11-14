@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Salas Med">
+<meta name="theme-color" content="#f6f7f9">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Salas de Medicina</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1c2433;--mute:#667085;--line:#e4e7ec;--acc:#1d4ed8;--accbg:#e8efff;--warn:#b45309;--warnbg:#fff4e0;--ok:#067647;--okbg:#e7f6ee;--out:#98a2b3;--outbg:#f2f4f7;--s2:#7e22ce;--s2bg:#f3e8ff;--bar:rgba(255,255,255,.92)}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1218;--card:#181c24;--ink:#e8ebf2;--mute:#98a2b3;--line:#2a303c;--acc:#7ea2ff;--accbg:#1c2a4a;--warn:#f5b45c;--warnbg:#3a2a12;--ok:#5fd39a;--okbg:#123224;--out:#7b8494;--outbg:#1f242e;--s2:#d0a2ff;--s2bg:#2f1d45;--bar:rgba(24,28,36,.92)}}
+@media(prefers-color-scheme:dark){.btn{color:#0f1218}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;font-size:15px}
+body{padding:env(safe-area-inset-top) 0 calc(72px + env(safe-area-inset-bottom))}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 16px 8px}
+h1{font-size:26px;margin:0;font-weight:700;letter-spacing:-.02em}
+.sub{color:var(--mute);font-size:13px;margin-top:2px}
+main{padding:0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.hidden{display:none!important}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;vertical-align:2px}
+.p1{background:var(--accbg);color:var(--acc)}.p2{background:var(--s2bg);color:var(--s2)}
+/* month */
+.mhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mhead h2{margin:0;font-size:18px}
+.nav{display:flex;gap:6px}
+.nav button{border:0;background:var(--outbg);color:var(--ink);border-radius:10px;min-width:40px;height:36px;font:inherit;font-weight:600}
+.month{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.dow{font-size:11px;font-weight:600;color:var(--mute);text-align:center;padding-bottom:2px}
+.day{aspect-ratio:1/1.08;border:0;border-radius:10px;background:var(--outbg);color:var(--ink);font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:5px 0 0;gap:3px}
+.day .n{font-size:15px;font-weight:600;width:28px;height:28px;line-height:28px;border-radius:999px;text-align:center}
+.day.s1{background:var(--accbg)}.day.s2{background:var(--s2bg)}
+.day.we,.day.out{background:transparent;color:var(--mute)}
+.day.out{opacity:.4}
+.day.today .n{background:var(--ink);color:var(--bg)}
+.day.sel{outline:2.5px solid var(--acc);outline-offset:-2px}
+.dots{display:flex;gap:2px}.dots i{width:5px;height:5px;border-radius:9px;background:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:var(--mute);margin-top:10px}
+.legend span{display:flex;align-items:center;gap:4px}.legend b{width:10px;height:10px;border-radius:3px;display:inline-block}
+/* day detail */
+.sec{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:18px 4px 8px}
+.sec h3{margin:0;font-size:17px}
+.btn{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:9px 12px;font:inherit;font-weight:600;font-size:14px}
+.btn.sec2{background:var(--outbg);color:var(--ink)}
+.room{margin-bottom:8px}
+.rh{display:flex;justify-content:space-between;align-items:baseline}
+.rn{font-size:17px;font-weight:700}.rt{color:var(--mute);font-size:12px}
+.blk{display:flex;gap:10px;padding:7px 9px;border-radius:9px;margin-top:6px;background:var(--accbg);font-size:14px}
+.blk .t{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;min-width:94px}
+.blk.early{background:var(--warnbg)}.blk.early .t{color:var(--warn)}
+.blk.fora{background:var(--outbg);color:var(--out)}
+.none{color:var(--mute);font-size:14px;padding:6px 0 2px}
+/* sequence */
+.step{display:grid;grid-template-columns:36px 1fr 34px;gap:10px;align-items:start;margin-bottom:8px}
+.step.done{opacity:.5}
+.num{width:32px;height:32px;border-radius:999px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700}
+.step.w .num{background:var(--warn);color:#fff}.step.l .num{background:var(--out);color:#fff}
+.dl{font-weight:600;font-size:14px;margin:2px 0 2px}.step.w .dl{color:var(--warn)}.step.b .dl{color:var(--acc)}.step.l .dl{color:var(--ok)}
+.chk{appearance:none;-webkit-appearance:none;width:30px;height:30px;border-radius:9px;border:2px solid var(--line);background:var(--card);margin:0;display:grid;place-items:center}
+.chk:checked{background:var(--ok);border-color:var(--ok)}
+.chk:checked::after{content:"";width:8px;height:14px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.prog{font-size:13px;color:var(--mute);margin:0 4px 10px}
+.note{font-size:12px;color:var(--mute);line-height:1.5;margin:14px 4px}
+/* tab bar */
+nav.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;background:var(--bar);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+nav.tabbar button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0}
+nav.tabbar button.on{color:var(--acc)}
+nav.tabbar svg{width:26px;height:26px}
+@media(min-width:700px){main,header{max-width:680px;margin:0 auto}}
+</style></head><body>
+<header><h1 id="htitle">Calendário</h1><div class="sub" id="hsub">Salas de Medicina · 2026-2</div></header>
+<main>
+<section id="v-cal">
+ <div class="card">
+  <div class="mhead"><h2 id="mtitle"></h2><div class="nav"><button id="prev" aria-label="Mês anterior">‹</button><button id="hoje">Hoje</button><button id="next" aria-label="Próximo mês">›</button></div></div>
+  <div class="month" id="month"></div>
+  <div class="legend"><span><b style="background:var(--accbg)"></b>Semana 1</span><span><b style="background:var(--s2bg)"></b>Semana 2</span><span><b style="background:var(--warn);border-radius:9px;width:7px;height:7px"></b>sala com aula às 07:10</span></div>
+ </div>
+ <div class="sec"><h3 id="dtitle"></h3><button class="btn" id="goConf">Conferência →</button></div>
+ <div id="drooms"></div>
+</section>
+<section id="v-conf" class="hidden">
+ <div class="sec" style="margin-top:4px"><h3 id="ctitle"></h3><button class="btn sec2" id="goCal">Trocar dia</button></div>
+ <div class="prog" id="prog"></div>
+ <div id="seq"></div>
+ <div class="note">Ordem: primeiro as salas com aula mais cedo, depois as livres e, por último, a 212 (backup). Os vistos ficam salvos neste iPhone.</div>
+</section>
+<div class="note">2º Andar › Bloco Amarelo. Turmas: 202 T1 · 204 T3 · 206 T4 · 208 T5 · 210 T2 · 212 backup. Intervalos 09:40–09:50, 12:20–13:20 e 15:50–16:00 ficam livres. Na Semana 2, o HM II de terça da 206 aparece só até 17:40 (cronograma digitalizado cortado).</div>
+</main>
+<nav class="tabbar">
+ <button id="t-cal" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Calendário</button>
+ <button id="t-conf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg>Conferência</button>
+</nav>
+<script>
+const DATA={"202": {"1": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "A&D II", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "HM - IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}], "Quarta": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "BIO II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ / UBSF Bakitas", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ", "fora": true}], "Segunda": [{"start": "08:00", "end": "12:20", "subj": "SM II - Teórica", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}, "2": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "A&D II", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "HM - IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}], "Quarta": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "BIO II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS / UBSF Bakitas", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS", "fora": true}], "Segunda": [{"start": "08:00", "end": "12:20", "subj": "SM II - Teórica", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}}, "210": {"1": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "A&D II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS / UBSF Edla Jordan", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HRHDS", "fora": true}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "BIO II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "A&D II", "fora": false}, {"start": "13:20", "end": "17:40", "subj": "SM II - Teórica", "fora": false}], "Quarta": [{"start": "08:50", "end": "12:20", "subj": "VIIDAS IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}, "2": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "SC IV", "fora": false}, {"start": "08:50", "end": "10:40", "subj": "A&D II", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "CI IV", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Quinta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ / UBSF Edla Jordan", "fora": true}], "Sexta": [{"start": "07:10", "end": "18:30", "subj": "SM II", "where": "HMSJ", "fora": true}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "BIO II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "A&D II", "fora": false}, {"start": "13:20", "end": "17:40", "subj": "SM II - Teórica", "fora": false}], "Quarta": [{"start": "08:50", "end": "12:20", "subj": "VIIDAS IV", "fora": false}, {"start": "13:20", "end": "15:50", "subj": "A&D II", "fora": false}]}}, "204": {"1": {"Quarta": [{"start": "07:10", "end": "18:30", "subj": "SM I", "where": "HMSJ", "fora": true}], "Quinta": [{"start": "07:10", "end": "08:50", "subj": "SC III", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "VIIDAS III", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BIO I", "fora": false}], "Sexta": [{"start": "08:00", "end": "12:20", "subj": "SM I - Teórica", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Terça": [{"start": "08:50", "end": "10:40", "subj": "CI III", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "A&D I", "fora": false}, {"start": "13:20", "end": "18:30", "subj": "A&D I", "fora": false}]}, "2": {"Quarta": [{"start": "07:10", "end": "18:30", "subj": "SM I", "where": "HRHDS / HMSJ", "fora": true}], "Quinta": [{"start": "07:10", "end": "08:50", "subj": "SC III", "fora": false}, {"start": "08:50", "end": "12:20", "subj": "VIIDAS III", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BIO I", "fora": false}], "Sexta": [{"start": "08:00", "end": "12:20", "subj": "SM I - Teórica", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "HM - IV", "fora": false}], "Terça": [{"start": "08:50", "end": "10:40", "subj": "CI III", "fora": false}, {"start": "10:40", "end": "12:20", "subj": "A&D I", "fora": false}, {"start": "13:20", "end": "18:30", "subj": "A&D I", "fora": false}]}}, "206": {"1": {"Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BMFM II", "fora": false}, {"start": "15:00", "end": "16:50", "subj": "CI II", "fora": false}], "Terça": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}, {"start": "16:50", "end": "18:30", "subj": "HM II", "fora": false}], "Quarta": [{"start": "07:10", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Quinta": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}]}, "2": {"Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "BMFM II", "fora": false}, {"start": "15:00", "end": "16:50", "subj": "CI II", "fora": false}], "Terça": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}, {"start": "16:50", "end": "17:40", "subj": "HM II", "fora": false}], "Quarta": [{"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Quinta": [{"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}], "Sexta": [{"start": "08:00", "end": "14:10", "subj": "Prática", "where": "UBSF Ulysses Guimarães", "fora": true}]}}, "208": {"1": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "HM II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "CI II", "fora": false}], "Quinta": [{"start": "08:00", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}], "Sexta": [{"start": "08:00", "end": "14:10", "subj": "Prática", "where": "UBSF Ulysses Guimarães", "fora": true}], "Quarta": [{"start": "09:50", "end": "12:20", "subj": "BCMM I", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}]}, "2": {"Terça": [{"start": "07:10", "end": "08:50", "subj": "HM II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Quarta": [{"start": "07:10", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BCMM I", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "BMFM II", "fora": false}], "Segunda": [{"start": "08:00", "end": "09:40", "subj": "SC II", "fora": false}, {"start": "09:50", "end": "12:20", "subj": "BCMM II", "fora": false}, {"start": "13:20", "end": "15:00", "subj": "CI II", "fora": false}], "Quinta": [{"start": "08:00", "end": "12:20", "subj": "BMFM II", "fora": false}, {"start": "13:20", "end": "16:50", "subj": "VIIDAS", "fora": false}]}}};
+const ROOMS=[['202','T1','4º sem'],['204','T3','3º sem'],['206','T4','2º sem'],['208','T5','2º sem'],['210','T2','4º sem'],['212','—','backup']];
+const DAYS=['Segunda','Terça','Quarta','Quinta','Sexta'];
+const START=new Date(2026,7,3,12),END=new Date(2026,11,18,12);
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const cap=x=>x.charAt(0).toUpperCase()+x.slice(1);
+const fmtShort=d=>cap(d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit'})).replace('.','');
+function weekOf(d){const m=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);if(m<START||m>END)return null;return (Math.floor(Math.round((m-START)/864e5)/7)%2)+1}
+function dayName(d){const w=d.getDay();return w>=1&&w<=5?DAYS[w-1]:null}
+function blocks(r,w,day){return ((DATA[r]||{})[String(w)]||{})[day]||[]}
+function firstIn(r,w,day){const b=blocks(r,w,day).find(x=>!x.fora);return b?b.start:null}
+function blkHTML(b){if(b.fora)return `<div class="blk fora"><span class="t">${b.start}–${b.end}</span><span>Turma fora · ${esc(b.where)}</span></div>`;
+ return `<div class="blk ${b.start==='07:10'?'early':''}"><span class="t">${b.start}–${b.end}</span><span>${esc(b.subj)}</span></div>`}
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+const today=new Date();today.setHours(12,0,0,0);
+let sel=new Date(Math.min(Math.max(today,START),END));
+let view=new Date(sel.getFullYear(),sel.getMonth(),1);
+const pillW=w=>w?` <span class="pill p${w}">Semana ${w}</span>`:'';
+
+function renderMonth(){
+ document.getElementById('mtitle').textContent=cap(view.toLocaleDateString('pt-BR',{month:'long',year:'numeric'}));
+ let h=['S','T','Q','Q','S','S','D'].map(x=>`<div class="dow">${x}</div>`).join('');
+ const first=new Date(view.getFullYear(),view.getMonth(),1,12),off=(first.getDay()+6)%7,n=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
+ for(let i=0;i<off;i++)h+='<div></div>';
+ for(let d=1;d<=n;d++){
+  const dt=new Date(view.getFullYear(),view.getMonth(),d,12),w=weekOf(dt),dn=dayName(dt);
+  const c=['day'];if(iso(dt)===iso(sel))c.push('sel');if(iso(dt)===iso(today))c.push('today');
+  if(!w)c.push('out');else if(!dn)c.push('we');else c.push('s'+w);
+  const early=w&&dn?ROOMS.filter(r=>firstIn(r[0],w,dn)==='07:10').length:0;
+  h+=`<button class="${c.join(' ')}" data-d="${iso(dt)}"><span class="n">${d}</span>${early?`<span class="dots">${'<i></i>'.repeat(early)}</span>`:''}</button>`}
+ const m=document.getElementById('month');m.innerHTML=h;
+ m.querySelectorAll('button[data-d]').forEach(b=>b.onclick=()=>{sel=new Date(b.dataset.d+'T12:00');renderAll()});
+}
+function guard(box,w,dn,msgWe){if(!w){box.innerHTML='<div class="card none">Fora do período dos cronogramas (03/08 a 18/12/2026).</div>';return true}
+ if(!dn){box.innerHTML=`<div class="card none">${msgWe}</div>`;return true}return false}
+function renderDay(){
+ const w=weekOf(sel),dn=dayName(sel);
+ document.getElementById('dtitle').innerHTML=fmtShort(sel)+pillW(w);
+ const box=document.getElementById('drooms');if(guard(box,w,dn,'Fim de semana: sem aulas.'))return;
+ box.innerHTML=ROOMS.map(([r,t,s])=>{const bl=blocks(r,w,dn);return `<div class="card room"><div class="rh"><span class="rn">Sala ${r}</span><span class="rt">${t} · ${s}</span></div>${bl.length?bl.map(blkHTML).join(''):`<div class="none">${r==='212'?'Backup, sem turma fixa.':'Nenhuma aula nesta sala.'}</div>`}</div>`}).join('');
+}
+function renderSeq(){
+ const w=weekOf(sel),dn=dayName(sel);
+ document.getElementById('ctitle').innerHTML=fmtShort(sel)+pillW(w);
+ const box=document.getElementById('seq'),prog=document.getElementById('prog');prog.textContent='';
+ if(guard(box,w,dn,'Fim de semana: sem conferência.'))return;
+ const rank=r=>{if(r==='212')return 9999;const f=firstIn(r,w,dn);return f?parseInt(f.replace(':','')):9000};
+ const ord=ROOMS.slice().sort((a,b)=>rank(a[0])-rank(b[0])||a[0].localeCompare(b[0]));
+ const key='conf-'+iso(sel),done=store(key)||{};
+ const upd=()=>{const d=store(key)||{};const k=ROOMS.filter(r=>d[r[0]]).length;prog.textContent=`${k} de ${ROOMS.length} salas conferidas`};
+ box.innerHTML=ord.map(([r,t,s],i)=>{const bl=blocks(r,w,dn),f=firstIn(r,w,dn);let c,dl;
+  if(r==='212'){c='l';dl='Backup: conferir por último'}
+  else if(!f){c='l';dl=bl.length?'Turma fora: sala livre o dia todo':'Sem aula: sala livre o dia todo'}
+  else if(f==='07:10'){c='w';dl='Conferir antes das 07:10'}
+  else{c='b';dl=`Conferir antes das ${f}`}
+  return `<div class="card step ${c} ${done[r]?'done':''}"><div class="num">${i+1}</div><div><div class="rh" style="justify-content:flex-start;gap:8px"><span class="rn">Sala ${r}</span><span class="rt">${t} · ${s}</span></div><div class="dl">${dl}</div>${bl.filter(b=>!b.fora).map(blkHTML).join('')}</div><input type="checkbox" class="chk" aria-label="Sala ${r} conferida" data-r="${r}" ${done[r]?'checked':''}></div>`}).join('');
+ box.querySelectorAll('.chk').forEach(cb=>cb.onchange=()=>{const d=store(key)||{};d[cb.dataset.r]=cb.checked;store(key,d);cb.closest('.step').classList.toggle('done',cb.checked);upd()});
+ upd();
+}
+function renderAll(){view=new Date(sel.getFullYear(),sel.getMonth(),1);renderMonth();renderDay();renderSeq()}
+function show(v){const cal=v==='cal';document.getElementById('v-cal').classList.toggle('hidden',!cal);document.getElementById('v-conf').classList.toggle('hidden',cal);
+ document.getElementById('t-cal').classList.toggle('on',cal);document.getElementById('t-conf').classList.toggle('on',!cal);
+ document.getElementById('htitle').textContent=cal?'Calendário':'Conferência do dia';window.scrollTo(0,0)}
+document.getElementById('t-cal').onclick=()=>show('cal');document.getElementById('t-conf').onclick=()=>show('conf');
+document.getElementById('goConf').onclick=()=>show('conf');document.getElementById('goCal').onclick=()=>show('cal');
+document.getElementById('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderMonth()};
+document.getElementById('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderMonth()};
+document.getElementById('hoje').onclick=()=>{sel=new Date(today);renderAll()};
+renderAll();
+if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+</script></body></html>
